@@ -29,6 +29,7 @@ robot testes/
 
 Para ver o relatório de testes e checar os cenários que passaram ou não é só abrir o arquivo report.html:
 
-![image](https://github.com/thiagoalanjs/demoblazer_python/assets/32438113/9e01fed7-0403-4a73-acce-9e751ae8017d)
+![image](https://github.com/thiagoalanjs/demoblazer_python/assets/32438113/2b6fbe5e-9b96-41c6-812f-42d1b8022e27)
+
 
 
