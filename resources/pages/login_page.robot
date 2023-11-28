@@ -12,7 +12,7 @@ ${USER_LOGGED}                      id:nameofuser
 
 
 *** Keywords ***
-Dado que realizo autentição com dados válidos
+Dado que realizo autenticação com dados válidos
     Click Link    ${LINK_LOG_IN}  
     Wait Until Element Is Visible  ${MODAL}
     Input Text    ${FIELD_USERNAME_LOG_IN}     thiagoqa 

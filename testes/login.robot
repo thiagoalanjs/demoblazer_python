@@ -6,5 +6,5 @@ Test Teardown    Fechar o navegador
 *** Test Cases ***
 
  Autenticação válida
-    Dado que realizo autentição com dados válidos
+    Dado que realizo autenticação com dados válidos
     Então verifico a mensagem Welcome thiagoqa no menu
