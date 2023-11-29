@@ -23,14 +23,6 @@ pip install robotframework-seleniumlibrary
 pip install robotframework-faker
 ```
 
-### Executar o projeto ###
-
-Acessar a pasta do projeto e rodar o comando abaixo:
-
-```shell
-robot testes/
-```
-
 #### Executando o projeto ####
 Apos instalação de Robot framework e suas dependências podemos executar esse projeto rodando o comando
 ```shell
