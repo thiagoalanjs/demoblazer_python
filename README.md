@@ -1,24 +1,35 @@
-## Projeto de automação de teste com Robot Framework e BDD ##
+### Projeto de automação com Robot Framework ###
+
 Projeto de testes de automacao do demoblaze.com com python usando Robot Framework
 
 Esse repositório contém um projeto de automação de testes que roda 3 features no site https://www.demoblaze.com/, são elas:
 
-1) "criacao_conta.feature" - testes realizados na sessão  'Sign Up' 
-2) "carrinho_compras.feature" - testes na funcionalidade do carrinho de compras
-3) "login.feature" - teste caminho feliz na tela de login.
+1) "criacao_conta.robot" - testes realizados na sessão  'Sign Up' 
+2) "carrinho_compras.robot" - testes na funcionalidade do carrinho de compras
+3) "login.robot" - teste caminho feliz na tela de login.
 
-### Instalação do ruby e dependências no Windows ###
 
-Seguir o passo a passo nos tutoriais
+### Instalação do Robot Framework ###
 
-[https://ftstblog.wordpress.com/2018/03/27/cucumber-configuracao-windows/](https://medium.com/@mayfernandes/season-tutoriais-ep-01-instalando-o-robot-framework-windows-aebf4477bcae)
+Siga o passo a passo - https://medium.com/lusitanos-qa/instala%C3%A7%C3%A3o-do-ambiente-para-utilizar-o-robot-framework-em-aplica%C3%A7%C3%B5es-web-34a141b9bf44 
 
-OU também:
+Para esse projeto também devemos instalar as bibliotecas **RequestsLibrary**, **Fakers** e **Selenium** rodando os comandos abaixo:
 
-[https://papito.medium.com/instalando-ruby-cucumber-e-capybara-no-windows-10-acb1fe833a95](https://www.youtube.com/watch?v=pfNkxR26fr0)
+```shell
+pip install robotframework-requests
 
-Para mais informações veja a documentação - https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
+pip install robotframework-seleniumlibrary
 
+pip install robotframework-faker
+```
+
+### Executar o projeto ###
+
+Acessar a pasta do projeto e rodar o comando abaixo:
+
+```shell
+robot testes/
+```
 
 #### Executando o projeto ####
 Apos instalação de Robot framework e suas dependências podemos executar esse projeto rodando o comando
