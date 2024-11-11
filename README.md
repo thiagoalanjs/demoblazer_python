@@ -24,13 +24,18 @@ python3 -m venv automacao
 source automacao/bin/activate
 
 # Instalando pacotes
+pip install setuptools
+
 pip install robotframework-requests
 
 pip install robotframework-seleniumlibrary
 
 pip install robotframework-faker
 
-# Saindo do ambiente virtual
+# Salvando as dependências no ambiente criado
+pip freeze > requirements.txt
+
+# Após os testes rode o comando para sair do ambiente virtual
 deactivate
 ```
 
