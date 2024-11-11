@@ -13,7 +13,7 @@ Esse repositório contém um projeto de automação de testes que roda 3 feature
 
 Siga o passo a passo - https://medium.com/lusitanos-qa/instala%C3%A7%C3%A3o-do-ambiente-para-utilizar-o-robot-framework-em-aplica%C3%A7%C3%B5es-web-34a141b9bf44 
 
-Para esse projeto também devemos instalar as bibliotecas **RequestsLibrary**, **Fakers** e **Selenium** rodando os comandos abaixo:
+Para esse projeto também devemos instalar as bibliotecas **RequestsLibrary**, **Fakers** e **Selenium**, você pode fazer criando um ambiente virtual 'venv":
 
 ```shell
 
@@ -38,7 +38,7 @@ pip freeze > requirements.txt
 # Após os testes rode o comando para sair do ambiente virtual
 deactivate
 
-#Reinstalação dependências na criação de novo ambiente
+# Reinstalação dependências na criação de novo ambiente
 pip install -r requirements.txt
 ```
 
