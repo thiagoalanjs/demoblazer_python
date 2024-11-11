@@ -37,6 +37,9 @@ pip freeze > requirements.txt
 
 # Após os testes rode o comando para sair do ambiente virtual
 deactivate
+
+#Reinstalação dependências na criação de novo ambiente
+pip install -r requirements.txt
 ```
 
 #### Executando o projeto ####
