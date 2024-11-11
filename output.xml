@@ -1,96 +1,877 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.4 on linux)" generated="20231127 23:26:19.461" rpa="false" schemaversion="4">
-<suite id="s1" name="Login" source="/home/thiagoqa/Desktop/demoblazer/testes/login.robot">
-<test id="s1-t1" name=" Autenticação válida" line="8">
-<kw name="Dado que acesso o site demoblaze.com.br" library="setup_teardown" type="SETUP">
-<kw name="Open Browser" library="SeleniumLibrary">
+<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-11-11T20:25:36.969156" rpa="false" schemaversion="5">
+<suite id="s1" name="Testes" source="/home/thiago/demoblazer_python/testes">
+<suite id="s1-s1" name="Cadastro Usuario" source="/home/thiago/demoblazer_python/testes/cadastro_usuario.robot">
+<test id="s1-s1-t1" name="Criação de cadastro com sucesso" line="8">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:37.191413" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
 <arg>url=${URL}</arg>
 <arg>browser=${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231127 23:26:19.884" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
-<status status="PASS" starttime="20231127 23:26:19.884" endtime="20231127 23:26:21.973"/>
+<status status="PASS" start="2024-11-11T20:25:37.191205" elapsed="1.512497"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231127 23:26:21.973" endtime="20231127 23:26:22.077"/>
+<status status="PASS" start="2024-11-11T20:25:38.703917" elapsed="0.012854"/>
 </kw>
-<status status="PASS" starttime="20231127 23:26:19.883" endtime="20231127 23:26:22.077"/>
+<status status="PASS" start="2024-11-11T20:25:37.190580" elapsed="1.526312"/>
 </kw>
-<kw name="Dado que realizo autenticação com dados válidos" library="login_page">
-<kw name="Click Link" library="SeleniumLibrary">
+<kw name="Dado que eu clico no link Sign up" owner="cadastro_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:38.717701" level="INFO">Clicking link 'Sign up'.</msg>
+<arg>${LINK_SIGN_UP}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:38.717392" elapsed="0.038599"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_SIGN_UP}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:25:38.756190" elapsed="0.223744"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:38.717142" elapsed="0.262931"/>
+</kw>
+<kw name="E realizo cadastro" owner="cadastro_usuario_page">
+<kw name="First Name" owner="FakerLibrary">
+<msg time="2024-11-11T20:25:38.980673" level="INFO">${RANDOM_NAME} = Mathias</msg>
+<var>${RANDOM_NAME}</var>
+<status status="PASS" start="2024-11-11T20:25:38.980531" elapsed="0.000161"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-11T20:25:38.980932" level="INFO">${RANDOM_NUMBER} = 8902558</msg>
+<var>${RANDOM_NUMBER}</var>
+<arg>random.randint(150, 9999999)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-11T20:25:38.980777" elapsed="0.000171"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:38.981190" level="INFO">Typing text 'Mathias 8902558' into text field 'id:sign-username'.</msg>
+<arg>${FIELD_USERNAME}</arg>
+<arg>${RANDOM_NAME} ${RANDOM_NUMBER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:38.981024" elapsed="0.054338"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:39.035761" level="INFO">Typing text 'teste1234' into text field 'id:sign-password'.</msg>
+<arg>${FIELD_PASSWORD}</arg>
+<arg>teste1234</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:39.035552" elapsed="0.044625"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:39.080567" level="INFO">Clicking button 'Sign up'.</msg>
+<arg>${BTN_SIGN_UP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:39.080357" elapsed="0.033254"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:38.980307" elapsed="0.133410"/>
+</kw>
+<kw name="Então valido a mensagem de sucesso Sign up successful." owner="cadastro_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:25:41.114468" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:39.114188" elapsed="2.000429"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:41.114964" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:25:41.137483" level="INFO">${alert_text} = Sign up successful.</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:25:41.114829" elapsed="0.022684"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${SUCCESS_MSG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:25:41.137621" elapsed="0.000151"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:39.113964" elapsed="2.023858"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:25:41.138200" elapsed="0.075716"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:41.138027" elapsed="0.075993"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:37.190006" elapsed="4.024108"/>
+</test>
+<test id="s1-s1-t2" name="Criação de cadastro com usuário repetido" line="13">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:41.215096" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:25:41.214922" elapsed="1.816608"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.031718" elapsed="0.013280"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:41.214723" elapsed="1.830381"/>
+</kw>
+<kw name="Dado que eu clico no link Sign up" owner="cadastro_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:43.045809" level="INFO">Clicking link 'Sign up'.</msg>
+<arg>${LINK_SIGN_UP}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.045601" elapsed="0.039587"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_SIGN_UP}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.085380" elapsed="0.221614"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:43.045323" elapsed="0.261768"/>
+</kw>
+<kw name="Quando preencho o campo usernam com usuário repetido" owner="cadastro_usuario_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:43.307674" level="INFO">Typing text 'teste' into text field 'id:sign-username'.</msg>
+<arg>${FIELD_USERNAME}</arg>
+<arg>teste</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.307522" elapsed="0.063021"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:43.370901" level="INFO">Typing text 'teste1234' into text field 'id:sign-password'.</msg>
+<arg>${FIELD_PASSWORD}</arg>
+<arg>teste1234</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.370715" elapsed="0.043658"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:43.414783" level="INFO">Clicking button 'Sign up'.</msg>
+<arg>${BTN_SIGN_UP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.414575" elapsed="0.033058"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:43.307293" elapsed="0.140448"/>
+</kw>
+<kw name="Então valido a mensagem de erro This user already exist." owner="cadastro_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:25:45.448866" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:43.448201" elapsed="2.000786"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:45.449436" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:25:45.471450" level="INFO">${alert_text} = This user already exist.</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:25:45.449301" elapsed="0.022208"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${USER_ALREADY_EXIST_MSG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:25:45.471702" elapsed="0.000231"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:43.447990" elapsed="2.024017"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:25:45.472534" elapsed="0.063736"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:45.472271" elapsed="0.064092"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:41.214373" elapsed="4.322071"/>
+</test>
+<test id="s1-s1-t3" name="Criação de cadastro com campo username vazio" line="18">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:45.537331" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:25:45.537156" elapsed="1.621573"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.158949" elapsed="0.015364"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:45.536957" elapsed="1.637466"/>
+</kw>
+<kw name="Dado que eu clico no link Sign up" owner="cadastro_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:47.175180" level="INFO">Clicking link 'Sign up'.</msg>
+<arg>${LINK_SIGN_UP}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.174979" elapsed="0.037474"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_SIGN_UP}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.212653" elapsed="0.222296"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:47.174715" elapsed="0.260350"/>
+</kw>
+<kw name="Quando não preencho o campo username" owner="cadastro_usuario_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:47.435803" level="INFO">Typing text 'teste1234' into text field 'id:sign-password'.</msg>
+<arg>${FIELD_PASSWORD}</arg>
+<arg>teste1234</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.435636" elapsed="0.054879"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:47.490878" level="INFO">Clicking button 'Sign up'.</msg>
+<arg>${BTN_SIGN_UP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.490690" elapsed="0.047375"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:47.435344" elapsed="0.102828"/>
+</kw>
+<kw name="Então valido a mensagem de erro Please fill out Username and Password." owner="cadastro_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:25:49.538918" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:47.538697" elapsed="2.000342"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:49.539379" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:25:49.561636" level="INFO">${alert_text} = Please fill out Username and Password.</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:25:49.539247" elapsed="0.022412"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${FIELD_WRONG_MSG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:25:49.561761" elapsed="0.000186"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:47.538441" elapsed="2.023557"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:25:49.562377" elapsed="0.063475"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:49.562186" elapsed="0.063766"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:45.536667" elapsed="4.089364"/>
+</test>
+<test id="s1-s1-t4" name="Criação de cadastro com campo password vazio" line="23">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:49.626886" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:25:49.626719" elapsed="1.786425"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.413321" elapsed="0.015513"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:49.626529" elapsed="1.802420"/>
+</kw>
+<kw name="Dado que eu clico no link Sign up" owner="cadastro_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:51.429618" level="INFO">Clicking link 'Sign up'.</msg>
+<arg>${LINK_SIGN_UP}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.429444" elapsed="0.037653"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_SIGN_UP}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.467286" elapsed="0.221008"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:51.429209" elapsed="0.259189"/>
+</kw>
+<kw name="Quando não preencho o campo password" owner="cadastro_usuario_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:51.688981" level="INFO">Typing text 'teste' into text field 'id:sign-username'.</msg>
+<arg>${FIELD_USERNAME}</arg>
+<arg>teste</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.688836" elapsed="0.061697"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:51.750912" level="INFO">Clicking button 'Sign up'.</msg>
+<arg>${BTN_SIGN_UP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.750705" elapsed="0.051011"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:51.688621" elapsed="0.113206"/>
+</kw>
+<kw name="Então valido a mensagem de erro Please fill out Username and Password." owner="cadastro_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:25:53.802895" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:51.802347" elapsed="2.000669"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:53.803376" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:25:53.825471" level="INFO">${alert_text} = Please fill out Username and Password.</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:25:53.803241" elapsed="0.022325"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${FIELD_WRONG_MSG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:25:53.825727" elapsed="0.000222"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:51.802097" elapsed="2.023910"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:25:53.826378" elapsed="0.062808"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:53.826194" elapsed="0.063089"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:49.626228" elapsed="4.263133"/>
+</test>
+<test id="s1-s1-t5" name="Criação de cadastro com os campos username e password vazios" line="28">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:53.890224" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:25:53.890057" elapsed="1.449631"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:25:55.339861" elapsed="0.013461"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:53.889866" elapsed="1.463552"/>
+</kw>
+<kw name="Dado que eu clico no link Sign up" owner="cadastro_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:55.354008" level="INFO">Clicking link 'Sign up'.</msg>
+<arg>${LINK_SIGN_UP}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:55.353845" elapsed="0.038491"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_SIGN_UP}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:25:55.392517" elapsed="0.223635"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:55.353633" elapsed="0.262627"/>
+</kw>
+<kw name="Quando que não preencho os campos" owner="cadastro_usuario_page">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:55.616885" level="INFO">Clicking button 'Sign up'.</msg>
+<arg>${BTN_SIGN_UP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:25:55.616722" elapsed="0.055970"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:55.616474" elapsed="0.056314"/>
+</kw>
+<kw name="Então valido a mensagem de erro Please fill out Username and Password." owner="cadastro_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:25:57.673486" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:55.673234" elapsed="2.000374"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:57.673934" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:25:57.693279" level="INFO">${alert_text} = Please fill out Username and Password.</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:25:57.673806" elapsed="0.019505"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${FIELD_WRONG_MSG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:25:57.693476" elapsed="0.000199"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:55.673015" elapsed="2.020721"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:25:57.694156" elapsed="0.064235"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:57.693954" elapsed="0.064575"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:53.889562" elapsed="3.869070"/>
+</test>
+<status status="PASS" start="2024-11-11T20:25:36.984423" elapsed="20.774639"/>
+</suite>
+<suite id="s1-s2" name="Carrinho Compras" source="/home/thiago/demoblazer_python/testes/carrinho_compras.robot">
+<test id="s1-s2-t1" name="Validando adição de produto ao carrinho de compras" line="8">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:25:57.762834" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:25:57.762539" elapsed="1.827237"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:25:59.589949" elapsed="0.013502"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:57.762372" elapsed="1.841189"/>
+</kw>
+<kw name="Dado que adiciono um celular ao carrinho de compras" owner="carrinho_compras_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:02.604535" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:25:59.603994" elapsed="3.000672"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:02.605128" level="INFO">Clicking link 'Phones'.</msg>
+<arg>${LINK_PHONES}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:02.604882" elapsed="0.039351"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:05.644726" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:02.644419" elapsed="3.000426"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:05.645281" level="INFO">Clicking link 'Samsung galaxy s6'.</msg>
+<arg>${LINK_MOBILE}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:05.645044" elapsed="0.540386"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:09.185915" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:06.185638" elapsed="3.000398"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:09.186437" level="INFO">Clicking link 'Add to cart'.</msg>
+<arg>${LINK_ADD_CART}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:09.186231" elapsed="0.039291"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:09.225920" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>accept</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:26:09.225754" elapsed="1.036513"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:10.262650" level="INFO">Clicking link 'Home'.</msg>
+<arg>${GO_HOME}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:10.262441" elapsed="0.549255"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:59.603784" elapsed="11.208020"/>
+</kw>
+<kw name="E adiciono um monitor ao carrinho de compras" owner="carrinho_compras_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:13.812559" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:10.812280" elapsed="3.000484"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:13.813196" level="INFO">Clicking link 'Monitors'.</msg>
+<arg>${LINK_MONITORS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:13.812973" elapsed="0.033397"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:16.846860" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:13.846603" elapsed="3.000376"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:16.847420" level="INFO">Clicking link 'ASUS Full HD'.</msg>
+<arg>${LINK_ASUS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:16.847184" elapsed="0.540689"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:20.388536" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:17.388049" elapsed="3.000609"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:20.389095" level="INFO">Clicking link 'Add to cart'.</msg>
+<arg>${LINK_ADD_CART}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:20.388862" elapsed="0.028820"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:20.418012" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>accept</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:26:20.417881" elapsed="1.038016"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:21.456259" level="INFO">Clicking link 'Home'.</msg>
+<arg>${GO_HOME}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:21.456092" elapsed="0.550063"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:10.812035" elapsed="11.194228"/>
+</kw>
+<kw name="E adiciono um laptop ao carrinho de compras" owner="carrinho_compras_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:25.007251" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:22.006728" elapsed="3.000637"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:25.007831" level="INFO">Clicking link 'Laptops'.</msg>
+<arg>${LINK_LAPTOPS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:25.007583" elapsed="0.030286"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:28.038313" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:25.038045" elapsed="3.000377"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:28.038853" level="INFO">Clicking link 'Sony vaio i7'.</msg>
+<arg>${LINK_SONY}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:28.038626" elapsed="0.531839"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:31.571212" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:28.570659" elapsed="3.000674"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:31.571802" level="INFO">Clicking link 'Add to cart'.</msg>
+<arg>${LINK_ADD_CART}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:31.571557" elapsed="0.030275"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:31.602139" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>accept</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:26:31.602017" elapsed="1.036617"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:22.006490" elapsed="10.632244"/>
+</kw>
+<kw name="Então clico no link do carrinho de compras" owner="carrinho_compras_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:32.639310" level="INFO">Clicking link 'Cart'.</msg>
+<arg>${LINK_CART}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:32.639169" elapsed="0.568254"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:32.638943" elapsed="0.568586"/>
+</kw>
+<kw name="E atualizo a página" owner="carrinho_compras_page">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2024-11-11T20:26:33.207919" elapsed="0.276232"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:33.207718" elapsed="0.276541"/>
+</kw>
+<kw name="E removo o monitor ao carrinho de compras" owner="carrinho_compras_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:35.485323" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:33.484804" elapsed="2.000639"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:35.504535" level="INFO">${text1} = ASUS Full HD</msg>
+<var>${text1}</var>
+<arg>${LINE_1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:35.485708" elapsed="0.018865"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:35.514367" level="INFO">${text2} = Samsung galaxy s6</msg>
+<var>${text2}</var>
+<arg>${LINE_2}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:35.504740" elapsed="0.009658"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:35.524059" level="INFO">${text3} = Sony vaio i7</msg>
+<var>${text3}</var>
+<arg>${LINE_3}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:35.514556" elapsed="0.009529"/>
+</kw>
+<if>
+<branch type="IF" condition="$text1 == &quot;ASUS Full HD&quot;">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:35.524548" level="INFO">Clicking link 'xpath://*[@id='tbodyid']/tr[1]/td[4]/a'.</msg>
+<arg>${LINK_DELETE_1}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:35.524396" elapsed="0.026289"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:35.524189" elapsed="0.026579"/>
+</branch>
+<branch type="ELSE IF" condition="$text2 == &quot;ASUS Full HD&quot;">
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>${LINK_DELETE_2}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-11T20:26:35.550981" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2024-11-11T20:26:35.550827" elapsed="0.000206"/>
+</branch>
+<branch type="ELSE IF" condition="$text3 == &quot;ASUS Full HD&quot;">
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>${LINK_DELETE_3}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-11T20:26:35.551134" elapsed="0.000017"/>
+</kw>
+<status status="NOT RUN" start="2024-11-11T20:26:35.551059" elapsed="0.000117"/>
+</branch>
+<status status="PASS" start="2024-11-11T20:26:35.524162" elapsed="0.027036"/>
+</if>
+<status status="PASS" start="2024-11-11T20:26:33.484597" elapsed="2.066658"/>
+</kw>
+<kw name="Então verifico o valor total no carrinho de compras" owner="carrinho_compras_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:37.551915" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:35.551666" elapsed="2.000445"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:37.566589" level="INFO">${text_price} = 1150</msg>
+<var>${text_price}</var>
+<arg>${TOTAL_PRICE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:37.552373" elapsed="0.014253"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${text_price}</arg>
+<arg>1150</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-11-11T20:26:37.566804" elapsed="0.000200"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:35.551441" elapsed="2.015635"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:26:37.567513" elapsed="0.095811"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:37.567313" elapsed="0.096143"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:25:57.762120" elapsed="39.901478"/>
+</test>
+<status status="PASS" start="2024-11-11T20:25:57.759419" elapsed="39.904519"/>
+</suite>
+<suite id="s1-s3" name="Contato Usuario" source="/home/thiago/demoblazer_python/testes/contato_usuario.robot">
+<test id="s1-s3-t1" name="Validando adição de mensagem de contato" line="8">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:37.667731" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:26:37.667581" elapsed="1.525159"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.192912" elapsed="0.015670"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:37.667401" elapsed="1.541322"/>
+</kw>
+<kw name="Dado que envio os dados de contato" owner="contato_usuario_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:39.209425" level="INFO">Clicking link 'Contact'.</msg>
+<arg>${LINK_CONTACT}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.209239" elapsed="0.038237"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_CONTACT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.247688" elapsed="0.222114"/>
+</kw>
+<kw name="First Name" owner="FakerLibrary">
+<msg time="2024-11-11T20:26:39.470183" level="INFO">${RANDOM_NAME} = Luiz Miguel</msg>
+<var>${RANDOM_NAME}</var>
+<status status="PASS" start="2024-11-11T20:26:39.469990" elapsed="0.000215"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-11T20:26:39.470533" level="INFO">${RANDOM_NUMBER} = 4550720</msg>
+<var>${RANDOM_NUMBER}</var>
+<arg>random.randint(150, 9999999)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.470326" elapsed="0.000228"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:39.470883" level="INFO">Typing text 'Luiz Miguel_4550720@test.com.br' into text field 'id:recipient-email'.</msg>
+<arg>${FIELD_CONTACT_EMAIL}</arg>
+<arg>${RANDOM_NAME}_${RANDOM_NUMBER}@${TXT_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.470668" elapsed="0.062324"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:39.533457" level="INFO">Typing text 'Luiz Miguel' into text field 'id:recipient-name'.</msg>
+<arg>${FIELD_CONTACT_NAME}</arg>
+<arg>${RANDOM_NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.533203" elapsed="0.044064"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:39.577738" level="INFO">Typing text 'Isso é um teste' into text field 'id:message-text'.</msg>
+<arg>${FIELD_CONTACT_TEXTAREA}</arg>
+<arg>Isso é um teste</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.577461" elapsed="0.040488"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:39.618331" level="INFO">Clicking button 'Send message'.</msg>
+<arg>${BTN_SEND_MSG}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.618134" elapsed="0.052420"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:39.208991" elapsed="0.461752"/>
+</kw>
+<kw name="Então verifico a mensagem retorno de sucesso" owner="contato_usuario_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:41.671575" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-11T20:26:39.671362" elapsed="2.000327"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:41.672071" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2024-11-11T20:26:41.694886" level="INFO">${alert_text} = Thanks for the message!!</msg>
+<var>${alert_text}</var>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2024-11-11T20:26:41.671940" elapsed="0.022972"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert_text}</arg>
+<arg>${SUCESS_CONTACT_MG}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-11-11T20:26:41.695022" elapsed="0.000164"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:39.671091" elapsed="2.024167"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-11T20:26:41.695661" elapsed="0.063026"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:41.695456" elapsed="0.063328"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:37.667142" elapsed="4.091715"/>
+</test>
+<status status="PASS" start="2024-11-11T20:26:37.664349" elapsed="4.094742"/>
+</suite>
+<suite id="s1-s4" name="Login" source="/home/thiago/demoblazer_python/testes/login.robot">
+<test id="s1-s4-t1" name=" Autenticação válida" line="8">
+<kw name="Dado que acesso o site demoblaze.com.br" owner="setup_teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:41.762581" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<arg>url=${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-11T20:26:41.762424" elapsed="1.473463"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-11T20:26:43.236057" elapsed="0.014274"/>
+</kw>
+<status status="PASS" start="2024-11-11T20:26:41.762252" elapsed="1.488203"/>
+</kw>
+<kw name="Dado que realizo autenticação com dados válidos" owner="login_page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:43.251300" level="INFO">Clicking link 'Log in'.</msg>
 <arg>${LINK_LOG_IN}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20231127 23:26:22.078" level="INFO">Clicking link 'Log in'.</msg>
-<status status="PASS" starttime="20231127 23:26:22.077" endtime="20231127 23:26:22.201"/>
+<status status="PASS" start="2024-11-11T20:26:43.251097" elapsed="0.038471"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${MODAL}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231127 23:26:22.201" endtime="20231127 23:26:22.483"/>
+<status status="PASS" start="2024-11-11T20:26:43.289749" elapsed="0.221698"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:43.511929" level="INFO">Typing text 'thiagoqa' into text field 'id:loginusername'.</msg>
 <arg>${FIELD_USERNAME_LOG_IN}</arg>
 <arg>thiagoqa</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231127 23:26:22.484" level="INFO">Typing text 'thiagoqa' into text field 'id:loginusername'.</msg>
-<status status="PASS" starttime="20231127 23:26:22.483" endtime="20231127 23:26:22.594"/>
+<status status="PASS" start="2024-11-11T20:26:43.511642" elapsed="0.052057"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:43.564116" level="INFO">Typing text 'thiagoqa' into text field 'id:loginpassword'.</msg>
 <arg>${FIELD_PASSWORD_LOG_IN}</arg>
 <arg>thiagoqa</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231127 23:26:22.595" level="INFO">Typing text 'thiagoqa' into text field 'id:loginpassword'.</msg>
-<status status="PASS" starttime="20231127 23:26:22.594" endtime="20231127 23:26:22.786"/>
+<status status="PASS" start="2024-11-11T20:26:43.563891" elapsed="0.044462"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:43.608743" level="INFO">Clicking button 'Log in'.</msg>
 <arg>${BTN_LOG_IN}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231127 23:26:22.787" level="INFO">Clicking button 'Log in'.</msg>
-<status status="PASS" starttime="20231127 23:26:22.786" endtime="20231127 23:26:22.873"/>
+<status status="PASS" start="2024-11-11T20:26:43.608540" elapsed="0.033114"/>
 </kw>
-<status status="PASS" starttime="20231127 23:26:22.077" endtime="20231127 23:26:22.873"/>
+<status status="PASS" start="2024-11-11T20:26:43.250810" elapsed="0.390944"/>
 </kw>
-<kw name="Então verifico a mensagem Welcome thiagoqa no menu" library="login_page">
-<kw name="Sleep" library="BuiltIn">
+<kw name="Então verifico a mensagem Welcome thiagoqa no menu" owner="login_page">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-11T20:26:45.642372" level="INFO">Slept 2 seconds.</msg>
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231127 23:26:24.874" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20231127 23:26:22.874" endtime="20231127 23:26:24.874"/>
+<status status="PASS" start="2024-11-11T20:26:43.642150" elapsed="2.000327"/>
 </kw>
-<kw name="Get Text" library="SeleniumLibrary">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-11-11T20:26:45.659630" level="INFO">${text_logged} = Welcome thiagoqa</msg>
 <var>${text_logged}</var>
 <arg>${USER_LOGGED}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231127 23:26:24.896" level="INFO">${text_logged} = Welcome thiagoqa</msg>
-<status status="PASS" starttime="20231127 23:26:24.874" endtime="20231127 23:26:24.896"/>
+<status status="PASS" start="2024-11-11T20:26:45.642678" elapsed="0.016982"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
+<kw name="Should Be Equal" owner="BuiltIn">
 <arg>${text_logged}</arg>
 <arg>Welcome thiagoqa</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20231127 23:26:24.896" endtime="20231127 23:26:24.896"/>
+<status status="PASS" start="2024-11-11T20:26:45.659808" elapsed="0.000167"/>
 </kw>
-<status status="PASS" starttime="20231127 23:26:22.873" endtime="20231127 23:26:24.896"/>
+<status status="PASS" start="2024-11-11T20:26:43.641949" elapsed="2.018087"/>
 </kw>
-<kw name="Fechar o navegador" library="setup_teardown" type="TEARDOWN">
-<kw name="Close Browser" library="SeleniumLibrary">
+<kw name="Fechar o navegador" owner="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20231127 23:26:24.897" endtime="20231127 23:26:24.969"/>
+<status status="PASS" start="2024-11-11T20:26:45.660449" elapsed="0.065712"/>
 </kw>
-<status status="PASS" starttime="20231127 23:26:24.896" endtime="20231127 23:26:24.969"/>
+<status status="PASS" start="2024-11-11T20:26:45.660245" elapsed="0.066024"/>
 </kw>
-<status status="PASS" starttime="20231127 23:26:19.882" endtime="20231127 23:26:24.969"/>
+<status status="PASS" start="2024-11-11T20:26:41.762012" elapsed="3.964341"/>
 </test>
-<status status="PASS" starttime="20231127 23:26:19.462" endtime="20231127 23:26:24.970"/>
+<status status="PASS" start="2024-11-11T20:26:41.759349" elapsed="3.967287"/>
+</suite>
+<status status="PASS" start="2024-11-11T20:25:36.969813" elapsed="68.757185"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Login">Login</stat>
+<stat pass="8" fail="0" skip="0" id="s1" name="Testes">Testes</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s1" name="Cadastro Usuario">Testes.Cadastro Usuario</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Carrinho Compras">Testes.Carrinho Compras</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3" name="Contato Usuario">Testes.Contato Usuario</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s4" name="Login">Testes.Login</stat>
 </suite>
 </statistics>
 <errors>
