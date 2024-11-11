@@ -16,11 +16,22 @@ Siga o passo a passo - https://medium.com/lusitanos-qa/instala%C3%A7%C3%A3o-do-a
 Para esse projeto também devemos instalar as bibliotecas **RequestsLibrary**, **Fakers** e **Selenium** rodando os comandos abaixo:
 
 ```shell
+
+# Criando um ambiente virtual
+python3 -m venv automacao
+
+# Ativando o ambiente virtual
+source automacao/bin/activate
+
+# Instalando pacotes
 pip install robotframework-requests
 
 pip install robotframework-seleniumlibrary
 
 pip install robotframework-faker
+
+# Saindo do ambiente virtual
+deactivate
 ```
 
 #### Executando o projeto ####
